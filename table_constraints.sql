@@ -150,3 +150,17 @@ Table altered.
 SQL> alter table student2 add constraint uniq unique(sroll);
 
 Table altered.
+SQL> alter table student2 add cont number;
+
+Table altered.
+
+SQL> alter table student2 add constraint pri primary key(cont);
+
+Table altered.
+
+SQL> alter table student2 add dept number;
+
+Table altered.
+SQL>  alter table student2 add constraint f_key foreign key(dept) references instructor(instid);
+
+Table altered.
