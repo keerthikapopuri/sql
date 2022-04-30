@@ -127,4 +127,26 @@ SQL> select * from student2;
 ---------- ---------- ---------- ---------- ----------
         12 avyaktha    987345120        212        9.5
          3 alifa      9866621633        211        9.8
+SQL> drop table student2;
 
+Table dropped.
+
+SQL> create table student2(grade float);
+
+Table created.
+SQL> alter table student add constraint chk check(grade between 0.0 and 10.0);
+
+Table altered.
+SQL> alter table student2 add sname varchar2(10);
+
+Table altered.
+
+SQL> alter table student2 modify sname not null;
+
+Table altered.
+SQL> alter table student2 add sroll number;
+
+Table altered.
+SQL> alter table student2 add constraint uniq unique(sroll);
+
+Table altered.
