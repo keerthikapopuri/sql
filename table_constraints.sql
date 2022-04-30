@@ -164,3 +164,21 @@ Table altered.
 SQL>  alter table student2 add constraint f_key foreign key(dept) references instructor(instid);
 
 Table altered.
+
+SQL> select constraint_name,table_name from user_constraints;
+
+CONSTRAINT_NAME                TABLE_NAME
+------------------------------ ------------------------------
+SYS_C00174481                  INSTRUCTOR
+SYS_C00174450                  STUDENT
+CHK_GRADE                      STUDENT
+SYS_C00174452                  STUDENT
+SYS_C00174453                  STUDENT
+SYS_C00174488                  STUDENT
+CHK                            STUDENT
+SYS_C00174872                  STUDENT2
+UNIQ                           STUDENT2
+PRI                            STUDENT2
+F_KEY                          STUDENT2
+
+11 rows selected.
