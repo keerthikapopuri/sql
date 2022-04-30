@@ -204,3 +204,20 @@ Table altered.
 SQL> alter table student drop constraint CHK_GRADE;
 
 Table altered.
+
+SQL> insert into instructor values('142');
+
+1 row created.
+
+SQL> delete from instructor
+  2  where instid='142';
+
+1 row deleted.
+
+SQL> delete from instructor
+  2  where instid='212';
+delete from instructor
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (Y20CS142.SYS_C00174488) violated - child
+record found
