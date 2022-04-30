@@ -196,3 +196,11 @@ SYS_C00174452                  STUDENT
 SYS_C00174453                  STUDENT
 SYS_C00174488                  STUDENT
 CHK                            STUDENT
+
+SQL> ALTER TABLE STUDENT DROP CONSTRAINT SYS_C00174450;
+
+Table altered.
+
+SQL> alter table student drop constraint CHK_GRADE;
+
+Table altered.
