@@ -25,6 +25,15 @@ new   1: insert into course values(123,'dbms')
 
 1 row created.
 ////////////////////////////////////////////////////////////////////////////////////////
+ create table course2(dept varchar(2) default 'c',course_name varchar(15) not null);
+ SQL> insert into course2 values('&dept','&course_name');
+Enter value for dept: 
+Enter value for course_name: iot
+old   1: insert into course2 values('&dept','&course_name')
+new   1: insert into course2 values('','iot')
+
+1 row created.
+////////////////////////////////////////////////////////////////////////////////////////
 SQL> create table studentnew(sno number,sname varchar2(10) not null,cont number,inst number,grade fl
 oat,constraint pk_sno primary key(sno),constraint uniq_cont unique(cont),constraint fk_inst foreign 
 key(inst) references instructor(instid));
