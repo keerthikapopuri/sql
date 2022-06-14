@@ -133,6 +133,23 @@ ORA-00001: unique constraint (Y20CS142.SYS_C00175594) violated
 
 SQL> update student set grade='10.4' where student_name='divya';
 update student set grade='10.4' where student_name='divya'
+                                                                                      
+                                                                                      SQL> delete from student where student_name=null;
+
+0 rows deleted.
+
+SQL> delete from student where grade='10.1';
+
+0 rows deleted.
+
+SQL> delete from student where inst='143';
+
+0 rows deleted.
+
+SQL> delete from course where department='ece';
+
+0 rows deleted.
+                                                                                      
 *
 ERROR at line 1:
 ORA-02290: check constraint (Y20CS142.CHK_GRADE) violated
@@ -159,3 +176,63 @@ update student set student_name=null where student_id='142'
 ERROR at line 1:
 ORA-01407: cannot update ("Y20CS142"."STUDENT"."STUDENT_NAME") to NULL
 
+SQL> insert into course values('124','m1','ece');
+insert into course values('124','m1','ece')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (Y20CS142.SYS_C00175407) violated
+
+
+SQL> update course set course_name='dbms' where course_id='121';
+update course set course_name='dbms' where course_id='121'
+*
+ERROR at line 1:
+ORA-00001: unique constraint (Y20CS142.SYS_C00175407) violated
+
+
+SQL> alter table student
+  2  drop constraint chk_grade;
+
+Table altered.
+
+SQL> alter table student
+  2  drop constraint course_qw;
+
+Table altered.
+SQL> select constraint_name,table_name from user_constraints;
+
+CONSTRAINT_NAME                TABLE_NAME
+------------------------------ ------------------------------
+SYS_C00175406                  COURSE
+SYS_C00175407                  COURSE
+SYS_C00174481                  INSTRUCTOR
+SYS_C00175592                  STUDENT
+SYS_C00175594                  STUDENT
+SYS_C00174872                  STUDENT2
+UNIQ                           STUDENT2
+PRI                            STUDENT2
+F_KEY                          STUDENT2
+
+9 rows selected.
+
+SQL> alter table student
+  2  drop constraint SYS_C00175592;
+
+Table altered.
+
+SQL> alter table student
+  2  drop constraint SYS_C00175594;
+
+Table altered.
+
+SQL> alter table student add constraint pk_key primary key(student_id);
+
+Table altered.
+SQL> alter table student modify student_name not null;
+
+Table altered.
+
+SQL> alter table student add constraint kh_key foreign key(inst) references course(course_id);
+
+Table altered.
+                                                                                      
