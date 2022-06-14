@@ -24,6 +24,13 @@ old   1: insert into course values(&course_id,'&course_name')
 new   1: insert into course values(123,'dbms')
 
 1 row created.
+////////////////////////////////////////////////////////////////////////////////////////
+SQL> create table studentnew(sno number,sname varchar2(10) not null,cont number,inst number,grade fl
+oat,constraint pk_sno primary key(sno),constraint uniq_cont unique(cont),constraint fk_inst foreign 
+key(inst) references instructor(instid));
+
+Table created.
+////////////////////////////////////////////////////////////////////////////////////////
 SQL> create table student(student_id number primary key,student_name varchar(15) not null,
 t,constraint chk_grade check(grade>=0.0 and grade<=10.0));
 
