@@ -1139,6 +1139,14 @@ CS-319
 CS-319
 
 7 rows selected.
+SQL> select course_id from teaches where semester='Fall' and year='2009'
+  2  MINUS
+  3  select course_id from teaches where semester='Spring' and year=2010;
+
+COURSE_I
+--------
+CS-347
+PHY-101
 
 SQL> select distinct s.name from student s, takes t, course c where c.dept_name='Comp. Sci.' and t.I
 D=s.ID and c.course_id=t.course_id;
