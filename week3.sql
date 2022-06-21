@@ -141,3 +141,987 @@ NAME
 --------------------
 Einstein
 Gold
+SQL> select * from instructor order by salary desc, name asc;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+22222 Einstein             Physics                   95000
+83821 Brandt               Comp. Sci.                92000
+12121 Wu                   Finance                   90000
+33456 Gold                 Physics                   87000
+98345 Kim                  Elec. Eng.                80000
+76543 Singh                Finance                   80000
+45565 Katz                 Comp. Sci.                75000
+76766 Crick                Biology                   72000
+10101 Srinivasan           Comp. Sci.                65000
+58583 Califieri            History                   62000
+32343 El Said              History                   60000
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+15151 Mozart               Music                     40000
+
+12 rows selected.
+SQL> select * from instructor,teaches;
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 10101 CS-101
+1        Fall         2009
+
+12121 Wu                   Finance                   90000 10101 CS-101
+1        Fall         2009
+
+15151 Mozart               Music                     40000 10101 CS-101
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 10101 CS-101
+1        Fall         2009
+
+32343 El Said              History                   60000 10101 CS-101
+1        Fall         2009
+
+33456 Gold                 Physics                   87000 10101 CS-101
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 10101 CS-101
+1        Fall         2009
+
+58583 Califieri            History                   62000 10101 CS-101
+1        Fall         2009
+
+76543 Singh                Finance                   80000 10101 CS-101
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 10101 CS-101
+1        Fall         2009
+
+83821 Brandt               Comp. Sci.                92000 10101 CS-101
+1        Fall         2009
+
+98345 Kim                  Elec. Eng.                80000 10101 CS-101
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 10101 CS-315
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 10101 CS-315
+1        Spring       2010
+
+15151 Mozart               Music                     40000 10101 CS-315
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 10101 CS-315
+1        Spring       2010
+
+32343 El Said              History                   60000 10101 CS-315
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 10101 CS-315
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 10101 CS-315
+1        Spring       2010
+
+58583 Califieri            History                   62000 10101 CS-315
+1        Spring       2010
+
+76543 Singh                Finance                   80000 10101 CS-315
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 10101 CS-315
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 10101 CS-315
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 10101 CS-315
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 10101 CS-347
+1        Fall         2009
+
+12121 Wu                   Finance                   90000 10101 CS-347
+1        Fall         2009
+
+15151 Mozart               Music                     40000 10101 CS-347
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 10101 CS-347
+1        Fall         2009
+
+32343 El Said              History                   60000 10101 CS-347
+1        Fall         2009
+
+33456 Gold                 Physics                   87000 10101 CS-347
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 10101 CS-347
+1        Fall         2009
+
+58583 Califieri            History                   62000 10101 CS-347
+1        Fall         2009
+
+76543 Singh                Finance                   80000 10101 CS-347
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 10101 CS-347
+1        Fall         2009
+
+83821 Brandt               Comp. Sci.                92000 10101 CS-347
+1        Fall         2009
+
+98345 Kim                  Elec. Eng.                80000 10101 CS-347
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 12121 FIN-20
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 12121 FIN-20
+1        Spring       2010
+
+15151 Mozart               Music                     40000 12121 FIN-20
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 12121 FIN-20
+1        Spring       2010
+
+32343 El Said              History                   60000 12121 FIN-20
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 12121 FIN-20
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 12121 FIN-20
+1        Spring       2010
+
+58583 Califieri            History                   62000 12121 FIN-20
+1        Spring       2010
+
+76543 Singh                Finance                   80000 12121 FIN-20
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 12121 FIN-20
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 12121 FIN-20
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 12121 FIN-20
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 15151 MU-199
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 15151 MU-199
+1        Spring       2010
+
+15151 Mozart               Music                     40000 15151 MU-199
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 15151 MU-199
+1        Spring       2010
+
+32343 El Said              History                   60000 15151 MU-199
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 15151 MU-199
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 15151 MU-199
+1        Spring       2010
+
+58583 Califieri            History                   62000 15151 MU-199
+1        Spring       2010
+
+76543 Singh                Finance                   80000 15151 MU-199
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 15151 MU-199
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 15151 MU-199
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 15151 MU-199
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 22222 PHY-10
+1        Fall         2009
+
+12121 Wu                   Finance                   90000 22222 PHY-10
+1        Fall         2009
+
+15151 Mozart               Music                     40000 22222 PHY-10
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 22222 PHY-10
+1        Fall         2009
+
+32343 El Said              History                   60000 22222 PHY-10
+1        Fall         2009
+
+33456 Gold                 Physics                   87000 22222 PHY-10
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 22222 PHY-10
+1        Fall         2009
+
+58583 Califieri            History                   62000 22222 PHY-10
+1        Fall         2009
+
+76543 Singh                Finance                   80000 22222 PHY-10
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 22222 PHY-10
+1        Fall         2009
+
+83821 Brandt               Comp. Sci.                92000 22222 PHY-10
+1        Fall         2009
+
+98345 Kim                  Elec. Eng.                80000 22222 PHY-10
+1        Fall         2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 32343 HIS-35
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 32343 HIS-35
+1        Spring       2010
+
+15151 Mozart               Music                     40000 32343 HIS-35
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 32343 HIS-35
+1        Spring       2010
+
+32343 El Said              History                   60000 32343 HIS-35
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 32343 HIS-35
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 32343 HIS-35
+1        Spring       2010
+
+58583 Califieri            History                   62000 32343 HIS-35
+1        Spring       2010
+
+76543 Singh                Finance                   80000 32343 HIS-35
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 32343 HIS-35
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 32343 HIS-35
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 32343 HIS-35
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 45565 CS-101
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 45565 CS-101
+1        Spring       2010
+
+15151 Mozart               Music                     40000 45565 CS-101
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 45565 CS-101
+1        Spring       2010
+
+32343 El Said              History                   60000 45565 CS-101
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 45565 CS-101
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 45565 CS-101
+1        Spring       2010
+
+58583 Califieri            History                   62000 45565 CS-101
+1        Spring       2010
+
+76543 Singh                Finance                   80000 45565 CS-101
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 45565 CS-101
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 45565 CS-101
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 45565 CS-101
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 45565 CS-319
+1        Spring       2010
+
+12121 Wu                   Finance                   90000 45565 CS-319
+1        Spring       2010
+
+15151 Mozart               Music                     40000 45565 CS-319
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 45565 CS-319
+1        Spring       2010
+
+32343 El Said              History                   60000 45565 CS-319
+1        Spring       2010
+
+33456 Gold                 Physics                   87000 45565 CS-319
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 45565 CS-319
+1        Spring       2010
+
+58583 Califieri            History                   62000 45565 CS-319
+1        Spring       2010
+
+76543 Singh                Finance                   80000 45565 CS-319
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 45565 CS-319
+1        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 45565 CS-319
+1        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 45565 CS-319
+1        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 76766 BIO-10
+1        Summer       2009
+
+12121 Wu                   Finance                   90000 76766 BIO-10
+1        Summer       2009
+
+15151 Mozart               Music                     40000 76766 BIO-10
+1        Summer       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 76766 BIO-10
+1        Summer       2009
+
+32343 El Said              History                   60000 76766 BIO-10
+1        Summer       2009
+
+33456 Gold                 Physics                   87000 76766 BIO-10
+1        Summer       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 76766 BIO-10
+1        Summer       2009
+
+58583 Califieri            History                   62000 76766 BIO-10
+1        Summer       2009
+
+76543 Singh                Finance                   80000 76766 BIO-10
+1        Summer       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 76766 BIO-10
+1        Summer       2009
+
+83821 Brandt               Comp. Sci.                92000 76766 BIO-10
+1        Summer       2009
+
+98345 Kim                  Elec. Eng.                80000 76766 BIO-10
+1        Summer       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 76766 BIO-30
+1        Summer       2010
+
+12121 Wu                   Finance                   90000 76766 BIO-30
+1        Summer       2010
+
+15151 Mozart               Music                     40000 76766 BIO-30
+1        Summer       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 76766 BIO-30
+1        Summer       2010
+
+32343 El Said              History                   60000 76766 BIO-30
+1        Summer       2010
+
+33456 Gold                 Physics                   87000 76766 BIO-30
+1        Summer       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 76766 BIO-30
+1        Summer       2010
+
+58583 Califieri            History                   62000 76766 BIO-30
+1        Summer       2010
+
+76543 Singh                Finance                   80000 76766 BIO-30
+1        Summer       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 76766 BIO-30
+1        Summer       2010
+
+83821 Brandt               Comp. Sci.                92000 76766 BIO-30
+1        Summer       2010
+
+98345 Kim                  Elec. Eng.                80000 76766 BIO-30
+1        Summer       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 83821 CS-190
+1        Spring       2009
+
+12121 Wu                   Finance                   90000 83821 CS-190
+1        Spring       2009
+
+15151 Mozart               Music                     40000 83821 CS-190
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 83821 CS-190
+1        Spring       2009
+
+32343 El Said              History                   60000 83821 CS-190
+1        Spring       2009
+
+33456 Gold                 Physics                   87000 83821 CS-190
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 83821 CS-190
+1        Spring       2009
+
+58583 Califieri            History                   62000 83821 CS-190
+1        Spring       2009
+
+76543 Singh                Finance                   80000 83821 CS-190
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 83821 CS-190
+1        Spring       2009
+
+83821 Brandt               Comp. Sci.                92000 83821 CS-190
+1        Spring       2009
+
+98345 Kim                  Elec. Eng.                80000 83821 CS-190
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 83821 CS-190
+2        Spring       2009
+
+12121 Wu                   Finance                   90000 83821 CS-190
+2        Spring       2009
+
+15151 Mozart               Music                     40000 83821 CS-190
+2        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 83821 CS-190
+2        Spring       2009
+
+32343 El Said              History                   60000 83821 CS-190
+2        Spring       2009
+
+33456 Gold                 Physics                   87000 83821 CS-190
+2        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 83821 CS-190
+2        Spring       2009
+
+58583 Califieri            History                   62000 83821 CS-190
+2        Spring       2009
+
+76543 Singh                Finance                   80000 83821 CS-190
+2        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 83821 CS-190
+2        Spring       2009
+
+83821 Brandt               Comp. Sci.                92000 83821 CS-190
+2        Spring       2009
+
+98345 Kim                  Elec. Eng.                80000 83821 CS-190
+2        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 83821 CS-319
+2        Spring       2010
+
+12121 Wu                   Finance                   90000 83821 CS-319
+2        Spring       2010
+
+15151 Mozart               Music                     40000 83821 CS-319
+2        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 83821 CS-319
+2        Spring       2010
+
+32343 El Said              History                   60000 83821 CS-319
+2        Spring       2010
+
+33456 Gold                 Physics                   87000 83821 CS-319
+2        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 83821 CS-319
+2        Spring       2010
+
+58583 Califieri            History                   62000 83821 CS-319
+2        Spring       2010
+
+76543 Singh                Finance                   80000 83821 CS-319
+2        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 83821 CS-319
+2        Spring       2010
+
+83821 Brandt               Comp. Sci.                92000 83821 CS-319
+2        Spring       2010
+
+98345 Kim                  Elec. Eng.                80000 83821 CS-319
+2        Spring       2010
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+10101 Srinivasan           Comp. Sci.                65000 98345 EE-181
+1        Spring       2009
+
+12121 Wu                   Finance                   90000 98345 EE-181
+1        Spring       2009
+
+15151 Mozart               Music                     40000 98345 EE-181
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+22222 Einstein             Physics                   95000 98345 EE-181
+1        Spring       2009
+
+32343 El Said              History                   60000 98345 EE-181
+1        Spring       2009
+
+33456 Gold                 Physics                   87000 98345 EE-181
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+45565 Katz                 Comp. Sci.                75000 98345 EE-181
+1        Spring       2009
+
+58583 Califieri            History                   62000 98345 EE-181
+1        Spring       2009
+
+76543 Singh                Finance                   80000 98345 EE-181
+1        Spring       2009
+
+
+ID    NAME                 DEPT_NAME                SALARY ID    COURSE
+----- -------------------- -------------------- ---------- ----- ------
+SEC_ID   SEMEST       YEAR
+-------- ------ ----------
+76766 Crick                Biology                   72000 98345 EE-181
+1        Spring       2009
+
+83821 Brandt               Comp. Sci.                92000 98345 EE-181
+1        Spring       2009
+
+98345 Kim                  Elec. Eng.                80000 98345 EE-181
+1        Spring       2009
+
+
+180 rows selected.
+SQL> select name,i.dept_name,building from instructor i,department d where i.dept_name=d.dept_name;
+
+NAME                 DEPT_NAME            BUILDING
+-------------------- -------------------- ---------------
+Srinivasan           Comp. Sci.           Taylor
+Wu                   Finance              Painter
+Mozart               Music                Packard
+Einstein             Physics              Watson
+El Said              History              Painter
+Gold                 Physics              Watson
+Katz                 Comp. Sci.           Taylor
+Califieri            History              Painter
+Singh                Finance              Painter
+Crick                Biology              Watson
+Brandt               Comp. Sci.           Taylor
+
+NAME                 DEPT_NAME            BUILDING
+-------------------- -------------------- ---------------
+Kim                  Elec. Eng.           Taylor
+
+12 rows selected.
+SQL> select distinct i.name from instructor i, teaches t where i.ID=t.ID;
+
+NAME
+--------------------
+Brandt
+Crick
+Einstein
+El Said
+Katz
+Kim
+Mozart
+Srinivasan
+Wu
+
+9 rows selected.
+SQL> select distinct c.course_id,c.title from takes t, course c where t.course_id=c.course_id and t.
+ID=12345;
+
+COURSE_I TITLE
+-------- --------------------------------------------------
+CS-101   Intro. to Computer Science
+CS-190   Game Design
+CS-315   Robotics
+CS-347   Database System Concepts
+SQL> select t.course_id, i.name from instructor i, teaches t where i.ID=t.ID and i.dept_name='Comp. 
+Sci.';
+
+COURSE_I NAME
+-------- --------------------
+CS-101   Srinivasan
+CS-315   Srinivasan
+CS-347   Srinivasan
+CS-101   Katz
+CS-319   Katz
+CS-190   Brandt
+CS-190   Brandt
+CS-319   Brandt
+
+8 rows selected.
+
+SQL> select i.name,t.course_id from teaches t,instructor i where t.ID=i.ID;
+
+NAME                 COURSE_I
+-------------------- --------
+Srinivasan           CS-101
+Srinivasan           CS-315
+Srinivasan           CS-347
+Wu                   FIN-201
+Mozart               MU-199
+Einstein             PHY-101
+El Said              HIS-351
+Katz                 CS-101
+Katz                 CS-319
+Crick                BIO-101
+Crick                BIO-301
+
+NAME                 COURSE_I
+-------------------- --------
+Brandt               CS-190
+Brandt               CS-190
+Brandt               CS-319
+Kim                  EE-181
+
+15 rows selected.
+
+SQL> select distinct i1.name from instructor i1,instructor i2 where i1.salary>i2.salary and i2.dept_
+name='Biology';
+
+NAME
+--------------------
+Brandt
+Einstein
+Gold
+Katz
+Kim
+Singh
+Wu
+SQL> select distinct i.* from teaches t, instructor i where t.ID=i.ID;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000
+12121 Wu                   Finance                   90000
+15151 Mozart               Music                     40000
+22222 Einstein             Physics                   95000
+32343 El Said              History                   60000
+45565 Katz                 Comp. Sci.                75000
+76766 Crick                Biology                   72000
+83821 Brandt               Comp. Sci.                92000
+98345 Kim                  Elec. Eng.                80000
+
+9 rows selected.
+SQL> select i.name,c.title from instructor i,teaches t,student s,takes ta,course c where s.ID=ta.ID
+and s.dept_name='Biology' and ta.course_ID=t.course_id and t.ID=i.ID and t.course_id=c.course_id;
+
+NAME                 TITLE
+-------------------- --------------------------------------------------
+Crick                Intro. to Biology
+Crick                Genetics
