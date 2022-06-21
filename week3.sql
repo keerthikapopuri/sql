@@ -1125,3 +1125,40 @@ NAME                 TITLE
 -------------------- --------------------------------------------------
 Crick                Intro. to Biology
 Crick                Genetics
+SQL> select course_id from teaches where (semester='Fall' and year=2010) or (semester='Spring' and y
+ear=2010);
+
+COURSE_I
+--------
+CS-315
+FIN-201
+MU-199
+HIS-351
+CS-101
+CS-319
+CS-319
+
+7 rows selected.
+
+SQL> select distinct s.name from student s, takes t, course c where c.dept_name='Comp. Sci.' and t.I
+D=s.ID and c.course_id=t.course_id;
+
+NAME
+--------------------
+Bourikas
+Brown
+Levy
+Shankar
+Williams
+Zhang
+
+6 rows selected.
+SQL> select ID from instructor
+  2  MINUS
+  3  select distinct ID from teaches;
+
+ID
+-----
+33456
+58583
+76543
