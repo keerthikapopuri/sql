@@ -143,40 +143,29 @@ SQL> select count(distinct t.ID)
 COUNT(DISTINCTT.ID)
 -------------------
                   6
-SQL> select title
-  2  from course
-  3  where course_id in (select course_id from teaches where (semester='Fall' and year=2009) or (sem
-ester='Spring' and year=2010));
+SQL> select course_id from teaches t1 where t1.semester='Fall' and t1.year=2009
+  2  and exists (select * from teaches t2 where t1.course_id=t2.course_id and t2.semester='Spring' and t2.year=2010)
+  3  ;
 
-TITLE
---------------------------------------------------
-Intro. to Computer Science
-Robotics
-Image Processing
-Database System Concepts
-Investment Banking
-World History
-Music Video Production
-Physical Principles
+COURSE_I
+--------
+CS-101
+SQL> select course_id from teaches t1 where t1.semester='Fall' and t1.year=2009
+  2  and not exists (select * from teaches t2 where t1.course_id=t2.course_id and t2.semester='Spring' and t2.year=2010)
+  3  ;
 
-8 rows selected.
-SQL> select distinct(title)
-  2  from course c,takes t
-  3  where t.semester='Fall' and t.year=2009 and c.course_id=t.course_id and t.course_id not in (sel
-ect course_id from takes where semester='Spring' and year=2010 );
+COURSE_I
+--------
+CS-347
+PHY-101
 
-TITLE
---------------------------------------------------
-Database System Concepts
-Physical Principles
-SQL> select distinct(title)
-  2  from course c,takes t
-  3  where t.semester='Fall' and t.year=2009 and c.course_id=t.course_id and t.course_id  in (select
- course_id from takes where semester='Spring' and year=2010 );
+SQL> select t1.ID from takes t1 where not exists
+  2  ((select course_id from course where dept_name='Biology')
+  3  MINUS
+  4  (select t2.course_id from takes t2 where t1.ID=t2.ID));
 
-TITLE
---------------------------------------------------
-Intro. to Computer Science
+no rows selected
+
 SQL> select title from course
   2  where course_id in
   3  (select course_id from teaches where year=2009 group by course_id having count(course_id)<=1);
