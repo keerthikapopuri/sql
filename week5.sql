@@ -1,0 +1,95 @@
+SQL> select initcap(dname) from dept;
+
+INITCAP(DNAME)
+--------------
+Accounting
+Research
+Sales
+Operations
+It
+Cse
+
+6 rows selected.
+
+SQL> select concat(concat(concat(ename,'['),concat(job,']')),concat('RS.',sal)) as lensal from emp;
+
+LENSAL
+----------------------------------------------------------------
+KING[PRESIDENT]RS.5000
+BLAKE[MANAGER]RS.2850
+CLARK[MANAGER]RS.2450
+JONES[MANAGER]RS.2975
+MARTIN[SALESMAN]RS.1250
+ALLEN[SALESMAN]RS.1600
+TURNER[SALESMAN]RS.1500
+JAMES[CLERK]RS.950
+WARD[SALESMAN]RS.1250
+FORD[ANALYST]RS.3000
+SMITH[CLERK]RS.800
+
+LENSAL
+----------------------------------------------------------------
+SCOTT[ANALYST]RS.3200
+ADAMS[CLERK]RS.1100
+MILLER[CLERK]RS.1300
+
+14 rows selected.
+
+SQL> select dname,length(dname)-length(replace(lower(dname),'s','')) len from dept;
+
+DNAME                 LEN
+-------------- ----------
+ACCOUNTING              0
+RESEARCH                1
+SALES                   2
+OPERATIONS              1
+it                      0
+cse                     1
+
+6 rows selected.
+
+SQL> select deptno from dept
+  2  MINUS
+  3  select distinct(deptno) from emp;
+
+    DEPTNO
+----------
+        40
+        50
+        60
+ 1* select * from emp where EXTRACT(year from hiredate)<1990 and EXTRACT(year from hiredate)>1980 and EXTRACT(day from hiredate)>14 order by hiredate
+QL> /
+
+    EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+--------- ---------- --------- ---------- --------- ---------- ----------
+   DEPTNO
+---------
+     7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+       30
+
+     7521 WARD       SALESMAN        7698 22-FEB-81       1250        500
+       30
+
+     7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400
+       30
+
+
+    EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+--------- ---------- --------- ---------- --------- ---------- ----------
+   DEPTNO
+---------
+     7839 KING       PRESIDENT            17-NOV-81       5000
+       10
+
+     7934 MILLER     CLERK           7782 23-JAN-82       1300
+       10
+
+
+  1  SELECT TO_CHAR (Sysdate, 'Day ddth Month YYYY HH:MI:SS AM') AS System_date_time
+  2* FROM Dual
+SQL> /
+
+SYSTEM_DATE_TIME
+-----------------------------------------
+Tuesday   12th July      2022 02:47:47 PM
+
