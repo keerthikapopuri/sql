@@ -123,6 +123,8 @@ ADAMS                                 40
 MILLER                                41
 
 14 rows selected.
+
+
 question 18.
 
   1* select to_char(to_date('&date','dd.mm.yy'),'Day') from dual
@@ -134,3 +136,24 @@ new   1: select to_char(to_date('05.05.2003','dd.mm.yy'),'Day') from dual
 TO_CHAR(T
 ---------
 Monday
+        
+   question 12:
+        
+sql>select e1.ename from emp e1,dept d1 where e1.deptno=d1.deptno and e1.sal>(select avg(e2.sal) from emp e2,dept d2 where e2.deptno=d2.deptno and d1.dname=d2.dname)
+        ENAME
+----------
+KING
+JONES
+SCOTT
+FORD
+BLAKE
+ALLEN
+
+question 17:        
+sql>select e1.ename from emp e1
+where e1.hiredate<(select e2.hiredate from emp e2 where lower(e2.job)='manager' and e1.deptno=e2.deptno)        
+    ENAME
+----------
+ALLEN
+WARD
+SMITH
