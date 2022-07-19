@@ -123,3 +123,14 @@ ADAMS                                 40
 MILLER                                41
 
 14 rows selected.
+question 18.
+
+  1* select to_char(to_date('&date','dd.mm.yy'),'Day') from dual
+SQL> /
+Enter value for date: 05.05.2003
+old   1: select to_char(to_date('&date','dd.mm.yy'),'Day') from dual
+new   1: select to_char(to_date('05.05.2003','dd.mm.yy'),'Day') from dual
+
+TO_CHAR(T
+---------
+Monday
