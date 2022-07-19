@@ -92,4 +92,34 @@ SQL> /
 SYSTEM_DATE_TIME
 -----------------------------------------
 Tuesday   12th July      2022 02:47:47 PM
+  1* select ename from emp,dual where to_char(hiredate,'dd')>15 and to_char(hiredate,'Day')='Wednesday' and (sysdate-hiredate)/30>20
+SQL> /
 
+ENAME
+----------
+SMITH
+
+  1* select ename,round((sysdate-hiredate)/365) from emp,dual
+SQL> /
+
+ENAME      ROUND((SYSDATE-HIREDATE)/365)
+---------- -----------------------------
+KING                                  41
+BLAKE                                 41
+CLARK                                 41
+JONES                                 41
+MARTIN                                41
+ALLEN                                 41
+TURNER                                41
+JAMES                                 41
+WARD                                  41
+FORD                                  41
+SMITH                                 42
+
+ENAME      ROUND((SYSDATE-HIREDATE)/365)
+---------- -----------------------------
+SCOTT                                 40
+ADAMS                                 40
+MILLER                                41
+
+14 rows selected.
