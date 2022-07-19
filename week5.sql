@@ -149,7 +149,7 @@ FORD
 BLAKE
 ALLEN
 
-question 17:        
+question 16:        
 sql>select e1.ename from emp e1
 where e1.hiredate<(select e2.hiredate from emp e2 where lower(e2.job)='manager' and e1.deptno=e2.deptno)        
     ENAME
