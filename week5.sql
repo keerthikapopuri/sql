@@ -169,6 +169,7 @@ ENAME
 KING
 FORD
 SCOTT
+ question 13:
         
  select e1.ename,count(e2.job) from emp e1,emp e2 where e1.job='MANAGER' and e1.empno=e2.mgr group by e1.ename
 /
@@ -177,4 +178,12 @@ SCOTT
 BLAKE                  5
 CLARK                  1
 JONES                  2
-
+        
+ question 14:
+        
+select e1.ename from emp e1,emp e2 where e1.job='MANAGER' and e1.empno=e2.mgr group by e1.ename 
+ having count(e2.job)=(select max(count(e2.job)) from emp e1 , emp e2 where e1.job='MANAGER' and e1.empno=e2.mgr group by e1.ename)
+        
+ENAME
+----------
+BLAKE
