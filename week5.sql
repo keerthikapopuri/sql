@@ -157,3 +157,24 @@ where e1.hiredate<(select e2.hiredate from emp e2 where lower(e2.job)='manager' 
 ALLEN
 WARD
 SMITH
+        
+question 15:
+        
+  1  select ename from emp e1
+  2* where(select count(*) from emp e2 where e1.ename!=e2.ename and e1.sal<e2.sal)<3
+SQL> /
+
+ENAME
+----------
+KING
+FORD
+SCOTT
+        
+ select e1.ename,count(e2.job) from emp e1,emp e2 where e1.job='MANAGER' and e1.empno=e2.mgr group by e1.ename
+/
+ ENAME      COUNT(E2.JOB)
+---------- -------------
+BLAKE                  5
+CLARK                  1
+JONES                  2
+
