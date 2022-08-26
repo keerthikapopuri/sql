@@ -162,3 +162,195 @@ SQL> select * from demo_tab;
       NUM1       NUM2        HCF        LCM
 ---------- ---------- ---------- ----------
          8         10          2         40
+5. Write a Pl/SQL program using FOR loop to insert ten rows into a database table.
+
+ SQL> create table mul(col1 number,col2 number);
+
+Table created.
+
+SQL> @C:\\Users\\exam2\\Desktop\\table.sql;
+declare
+num number:=3;
+begin
+for i in 1..10 LOOP
+insert into mul values(num,num*i);
+END LOOP;
+END;
+/
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from mul;
+
+      COL1       COL2
+---------- ----------
+         3          3
+         3          6
+         3          9
+         3         12
+         3         15
+         3         18
+         3         21
+         3         24
+         3         27
+         3         30
+
+10 rows selected.
+
+6.Consider the following relation schemas
+
+Inventory
+ 
+Product_ID	Product_name	Quantity	 
+
+   Purchase_Record
+ 
+Product_ID	Status	Date	 
+
+Write a PL/SQL block to read the quantity of a product from inventory and if it is > 0 reduce the quantity by 1 and record the status of purchase of that product as ‘PURCHASED’. Otherwise record the status of purchase of that product as ‘OUT OF STOCK’. While recording the status of a purchase, record the date of transaction.
+
+declare
+id inventory.pid%type:=&id;
+qt inventory.qty%type;
+begin
+select qty into qt from inventory where pid=id;
+if qt>0 then
+update inventory set qty=qty-1 where pid=id;
+insert into purchase_record values(id,'PURCHASED',sysdate);
+else
+insert into purchase_record values(id,'NOT BUYED',sysdate);
+end if;
+end;
+/
+SQL> create table inventory(pid number,qty number,pname varchar(10));
+
+Table created.
+
+SQL>  create table purchase_record(pid number,status varchar(10),dtoday date
+
+Table created.
+
+  1* insert into inventory values(&pid,&qty,'&pname')
+SQL> /
+Enter value for pid: 1
+Enter value for qty: 10
+Enter value for pname: rice
+old   1: insert into inventory values(&pid,&qty,'&pname')
+new   1: insert into inventory values(1,10,'rice')
+
+1 row created.
+
+SQL> /
+Enter value for pid: 2
+Enter value for qty: 23
+Enter value for pname: dal
+old   1: insert into inventory values(&pid,&qty,'&pname')
+new   1: insert into inventory values(2,23,'dal')
+
+1 row created.
+SQL> /
+Enter value for pid: 3
+Enter value for qty: 22
+Enter value for pname: veggies
+old   1: insert into inventory values(&pid,&qty,'&pname')
+new   1: insert into inventory values(3,22,'veggies')
+
+1 row created.
+
+SQL> @C:\\Users\\exam2\\Desktop\\table.sql;
+Enter value for id: 1
+old   2: id inventory.pid%type:=&id;
+new   2: id inventory.pid%type:=1;
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from inventory;
+
+       PID        QTY PNAME
+---------- ---------- ----------
+         1          9 rice
+         2         23 dal
+         3         22 veggies
+
+SQL> select * from purchase_record;
+
+       PID STATUS     DTODAY
+---------- ---------- ---------
+         1 PURCHASED  26-AUG-22
+ 7. Create a table employee with eno, ename, and basic_pay attributes, insert 3 to 4 records and write a PL/SQL block to calculate the Gross salary & Net salary for an employee for the following conditions:
+HRA is 15% of basic.
+DA is 62% of basic.
+PF is 780/- if gross salary exceeds 8000, otherwise 600/-.
+Professional tax is 2% of basic.
+and then print the employee no, name, hra, da, pf, ptax, gross salary & net salary for that employee.
+
+
+declare
+bp employee.basic_pay%type;
+no employee.eno%type;
+name employee.ename%type;
+hra number;
+da number;
+pf number;
+ptax number;
+gross number;
+tax number;
+net number;
+req number:=&req;
+begin
+select eno,ename,basic_pay into no,name,bp from employee where eno=req;
+hra:=(bp*15)/100;
+da:=(bp*62)/100;
+gross:=bp+hra+da;
+if gross>8000 then
+pf:=780;
+else
+pf:=600;
+end if;
+tax:=(bp*2)/100;
+net:=gross-pf-tax;
+dbms_output.put_line('No:'||' '||no||'name:'||' '||name||'basic:'||' '||
+bp||'hra:'||' '||hra||'da:'||' '||da||'gross:'||' '||gross||'pf:'||' '||pf||'tax:'||' '||tax||'net:'||' '||net);
+end;
+/
+
+
+SQL> create table employee(eno number,ename varchar(20),basic_pay number);
+
+Table created.
+
+SQL> insert into employee values(&eno,'&ename',&basic_pay);
+Enter value for eno: 12
+Enter value for ename: keerthi
+Enter value for basic_pay: 90000
+old   1: insert into employee values(&eno,'&ename',&basic_pay)
+new   1: insert into employee values(12,'keerthi',90000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 14
+Enter value for ename: sravs
+Enter value for basic_pay: 85000
+old   1: insert into employee values(&eno,'&ename',&basic_pay)
+new   1: insert into employee values(14,'sravs',85000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 15
+Enter value for ename: divya
+Enter value for basic_pay: 85500
+old   1: insert into employee values(&eno,'&ename',&basic_pay)
+new   1: insert into employee values(15,'divya',85500)
+
+1 row created.
+
+
+SQL> @C:\\Users\\exam2\\Desktop\\table.sql;
+Input truncated to 1 characters
+Enter value for req: 12
+old  12: req number:=&req;
+new  12: req number:=12;
+No: 12name: keerthibasic: 90000hra: 13500da: 55800gross: 159300pf: 780tax:
+1800net: 156720
