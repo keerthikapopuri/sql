@@ -354,3 +354,75 @@ old  12: req number:=&req;
 new  12: req number:=12;
 No: 12name: keerthibasic: 90000hra: 13500da: 55800gross: 159300pf: 780tax:
 1800net: 156720
+Write a PL/SQL block to handle the following built-in exceptions
+no_data_found
+too_many_rows
+zero_divide  
+
+declare
+
+bp employee.basic_pay%type;
+
+no employee.eno%type;
+
+name employee.ename%type;
+req number:=&req;
+begin
+select eno,ename,basic_pay into bp,no,name from employee where no=req;
+exception
+when NO_DATA_FOUND then
+dbms_output.put_line('data not found');
+end;
+/
+SQL> @C:\\Users\\exam2\\Desktop\\table.sql;
+Input truncated to 1 characters
+Enter value for req: 17
+old   8: req number:=&req;
+new   8: req number:=17;
+data not found
+
+PL/SQL procedure successfully completed.
+
+declare
+bp employee.basic_pay%type;
+name employee.ename%type;
+no employee.eno%type;
+req number:=&req;
+begin
+select eno,ename,basic_pay into no,name,bp from employee where eno=req;
+exception
+when TOO_MANY_ROWS then
+dbms_output.put_line('too many rows found');
+end;
+/
+SQL> @C:\\Users\\exam2\\Desktop\\table.sql;
+Input truncated to 1 characters
+Enter value for req: 15
+old   5: req number:=&req;
+new   5: req number:=15;
+too many rows found
+
+PL/SQL procedure successfully completed.
+
+declare
+bp employee.basic_pay%type;
+name employee.ename%type;
+no employee.eno%type;
+req number:=&req;
+m number;
+begin
+select eno,ename,basic_pay into no,name,bp from employee where eno=req;
+m:=bp/0;
+exception
+when zero_divide then
+dbms_output.put_line('zero division occured');
+end;
+/
+SQL>  @C:\\Users\\exam2\\Desktop\\table.sql;
+Input truncated to 1 characters
+Enter value for req: 12
+old   5: req number:=&req;
+new   5: req number:=12;
+zero division occured
+
+PL/SQL procedure successfully completed.
