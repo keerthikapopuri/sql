@@ -1,31 +1,31 @@
-1. read a number and print multiplication table
-DECLARE
-n NUMBER;
-i NUMBER;
-BEGIN
-n:=&n;
-for i in 1..10 LOOP
-DBMS_OUTPUT.PUT_LINE(n||'*'||i||'='||n*i);
-END LOOP;
-END;
-/
-SQL> @C:\\Users\\y20cs142\\Desktop\\multiplicationtable.sql;
-Input truncated to 1 characters
-Enter value for n: 5
-old   5: n:=&n;
-new   5: n:=5;
-5*1=5
-5*2=10
-5*3=15
-5*4=20
-5*5=25
-5*6=30
-5*7=35
-5*8=40
-5*9=45
-5*10=50
-
-PL/SQL procedure successfully completed.
+3.	Write a PL/SQL block which will accept a number and checks if it is a prime number or not. 
+declare
+n number;			
+i number;		
+temp number;	
+begin
+n:=&n;				
+i := 2;
+temp := 1;
+for i in 2..n/2
+loop
+if mod(n, i) = 0 then
+temp := 0;
+exit;
+end if;
+end loop;
+if temp = 1 then
+dbms_output.put_line('it is prime number');
+else
+dbms_output.put_line('it is not a prime number');
+end if;
+end;		
+SQL> @ C:\\Users\\exam2\\Desktop\\table.sql;
+ 23  /
+Enter value for n: 67
+old   6: n:=&n;
+new   6: n:=67;
+it is prime number
 
 2.read a number and check palindrome or not
 DECLARE 
@@ -354,6 +354,66 @@ old  12: req number:=&req;
 new  12: req number:=12;
 No: 12name: keerthibasic: 90000hra: 13500da: 55800gross: 159300pf: 780tax:
 1800net: 156720
+
+8.	Consider the following relation schemas
+Emp
+empid	name	salary	dno
+ Del_History
+dno	Rows_deleted	date
+Write a PL/SQL block to delete records of all employees who belong to a particular department and then record the dno, no of rows deleted and date on which deletion occurred in the Del_History table using implicit cursors. 
+
+declare
+dept emp8.dno%type;
+num number;
+begin
+dept:=&dept;
+delete from emp8 where dno=dept;
+if sql%found then
+num:=sql%rowcount;
+insert into del_history values(dept,num,sysdate);
+end if;
+end;
+
+Wrote file afiedt.buf
+
+  1* create table del_history(dno number,num_rows number,dtoday date)
+SQL> /
+
+Table created.
+
+SQL> select * from emp8;
+
+     EMPID EMPNAME                  SALARY        DNO
+---------- -------------------- ---------- ----------
+        12 keerthi                  100000          4
+        13 divya                    100000          4
+        12 sravs                     90000          3
+        11 lohi                      90000          3
+        10 alifa                     95000          5
+
+SQL>  @ C:\\Users\\exam2\\Desktop\\table.sql;
+ 12  /
+Enter value for dept: 4
+old   5: dept:=&dept;
+new   5: dept:=4;
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from del_history;
+
+       DNO   NUM_ROWS DTODAY
+---------- ---------- ---------
+         4          2 30-AUG-22
+
+SQL> select * from emp8;
+
+     EMPID EMPNAME                  SALARY        DNO
+---------- -------------------- ---------- ----------
+        12 sravs                     90000          3
+        11 lohi                      90000          3
+        10 alifa                     95000          5
+
+
 Write a PL/SQL block to handle the following built-in exceptions
 no_data_found
 too_many_rows
