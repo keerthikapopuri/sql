@@ -1,0 +1,84 @@
+1.	Write a stored procedure, raise_salary which accepts an employee number, increment and modifies salary
+of that employee in employee table. Modified salary =salary increase amount+ current salary. If employee number
+is not found or if the current salary is null, it should raise an exception. Otherwise, updates the salary.
+
+declare
+my_exception exception;
+no number;
+inc number;
+pay number;
+begin
+no:=&no;
+inc:=&inc;
+select basic_pay into pay from employee where no=eno;
+if pay=0 then 
+raise my_exception;
+else
+update employee set basic_pay=basic_pay+inc where no=eno;
+end if;
+exception
+when my_exception then 
+dbms_output.put_line('exception occured');
+when no_data_found then 
+dbms_output.put_line('no data found');
+end;
+/
+
+SQL> select * from employee;
+
+       ENO ENAME                 BASIC_PAY
+---------- -------------------- ----------
+         1 keerthi                   63000
+         2 sravs                     50000
+         3 john                          0
+SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+Enter value for no: 4
+old   7: no:=&no;
+new   7: no:=4;
+Enter value for inc: 3000
+old   8: inc:=&inc;
+new   8: inc:=3000;
+no data found
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+Enter value for no: 3
+old   7: no:=&no;
+new   7: no:=3;
+Enter value for inc: 3000
+old   8: inc:=&inc;
+new   8: inc:=3000;
+exception occured
+
+PL/SQL procedure successfully completed.
+2.	Write a PL/SQL function that accepts department number and returns the total salary of the department.
+declare
+total number:=0;
+deptn emp.deptno%type;
+salary emp.sal%type;
+num emp.deptno%type;
+cursor cur_emp is select sal,deptno from emp;
+begin
+deptn:=&deptn;
+open cur_emp;
+loop
+fetch cur_emp into salary,num;
+if cur_emp%NOTFOUND then exit;
+end if;
+if num=deptn then 
+total:=total+salary;
+end if;
+end loop;
+close cur_emp;
+dbms_output.put_line(total);
+end;
+/
+
+SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+Enter value for deptn: 10
+old   8: deptn:=&deptn;
+new   8: deptn:=10;
+8750
+
+PL/SQL procedure successfully completed.
