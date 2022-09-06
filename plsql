@@ -413,8 +413,47 @@ SQL> select * from emp8;
         11 lohi                      90000          3
         10 alifa                     95000          5
 
+9.	Given the table EMPLOYEE (EmpNo, Name, Salary, Designation, DeptID) write a cursor to select the five highest and lowest paid employees from the table.
+declare
+name emp.ename%type;
+salary emp.sal%type;
+cursor cur_high is select ename,sal from emp order by sal desc;
+cursor cur_low is select ename,sal from emp order by sal;
+begin
+dbms_output.put_line('high to low');
+open cur_high;
+loop
+fetch cur_high into name,salary;
+exit when cur_high%rowcount>5;
+dbms_output.put_line(name||' '||salary);
+end loop;
+dbms_output.put_line('low to high');
+open cur_low;
+loop
+fetch cur_low into name,salary;
+exit when cur_low%rowcount>5;
+dbms_output.put_line(name||' '||salary);
+end loop;
+end;
+/
+SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+Input truncated to 1 characters
+high to low
+KING 5000
+SCOTT 3200
+FORD 3000
+JONES 2975
+BLAKE 2850
+low to high
+SMITH 800
+JAMES 950
+ADAMS 1100
+MARTIN 1250
+WARD 1250
 
-Write a PL/SQL block to handle the following built-in exceptions
+PL/SQL procedure successfully completed.
+
+11. Write a PL/SQL block to handle the following built-in exceptions
 no_data_found
 too_many_rows
 zero_divide  
