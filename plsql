@@ -678,3 +678,49 @@ new   5: req number:=12;
 zero division occured
 
 PL/SQL procedure successfully completed.
+
+12.	Write a PL/SQL block to check whether the quantity of any product in Inventory table is < 0. If so, using an exception display relevant message and update quantity to 0.
+
+Inventory
+Product_ID	Product_name	Quantity
+SQL> select * from inventory;
+
+       PID        QTY PNAME
+---------- ---------- ----------
+         1         10 rice
+         2          7 dal
+         3         -1 veg
+declare 
+cursor cur_inv is select pid,qty,pname from inventory;
+id inventory.pid%type;
+quant inventory.qty%type;
+name inventory.pname%type;
+negitive_quantity exception;
+begin
+open cur_inv;
+loop
+fetch cur_inv into id,quant,name;
+if cur_inv%NOTFOUND then exit;
+end if;
+if quant<0 then
+raise negitive_quantity;
+end if;
+end loop;
+close cur_inv;
+exception
+when negitive_quantity then
+update inventory set qty=0 where pname=name;
+dbms_output.put_line(name||' set to zero');
+end;
+/
+SQL>  @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+vegset to zero
+
+SQL> select * from inventory;
+
+       PID        QTY PNAME
+---------- ---------- ----------
+         1         10 rice
+         2          7 dal
+         3          0 veg
+
