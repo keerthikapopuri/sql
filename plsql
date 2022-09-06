@@ -452,7 +452,160 @@ MARTIN 1250
 WARD 1250
 
 PL/SQL procedure successfully completed.
+10.	Consider the following relation schemas
 
+Bank_Main
+Acc_no	Name	Address	Acc-type	Curr_balance
+Bank_Trans
+Acc_no	Tr_type	Tr_date	Tr_amt	Upd_flag
+
+Where acc_type is S – savings C- current 
+Tr_type is D – deposit W – withdrawal 
+Write a PL/SQL block to update master table’s (i.e., Bank_Main) curr_balance field with transaction details from transaction file (i.e., Bank_Trans) and also change the status of the Upd_flag field of transaction table to ‘Y’ once the updation is complete.
+declare
+acc bank_trans.accno%type;
+typ varchar(2);
+amount number;
+cursor cur_trans is select accno,trtype,tramt from bank_trans;
+begin
+open cur_trans;
+loop
+fetch cur_trans into acc,typ,amount;
+if cur_trans%NOTFOUND then exit;
+end if;
+if typ='w' then 
+update bank_main set balance=balance-amount where acc=accno;
+update bank_trans set upd_flag='y' where acc=accno;
+else
+update bank_main set balance=balance+amount where acc=accno;
+update bank_trans set upd_flag='y' where acc=accno;
+end if;
+end loop;
+close cur_trans;
+end;
+/
+SQL> select * from bank_main;
+
+     ACCNO NAME                 ADRESS               AC    BALANCE
+---------- -------------------- -------------------- -- ----------
+         1 keerthi              tenali               s       34000
+         2 divya                prakasham            c       25000
+         3 sravs                ongole               c       40000
+         4 lohi                 guntur               c       32000
+
+SQL> select * from bank_trans;
+
+     ACCNO TR TRDATE         TRAMT UPD_F
+---------- -- --------- ---------- -----
+         1 w  06-SEP-22      12000
+         2 d  06-SEP-22     100000
+
+SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
+Input truncated to 1 characters
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from bank_trans;
+
+     ACCNO TR TRDATE         TRAMT UPD_F
+---------- -- --------- ---------- -----
+         1 w  06-SEP-22      12000 y
+         2 d  06-SEP-22     100000 y
+
+SQL> select * from bank_main;
+
+     ACCNO NAME                 ADRESS               AC    BALANCE
+---------- -------------------- -------------------- -- ----------
+         1 keerthi              tenali               s       22000
+         2 divya                prakasham            c      125000
+         3 sravs                ongole               c       40000
+         4 lohi                 guntur               c       32000
+
+
+SQL> create table bank_main(accno number,name varchar(20),adress varchar(20),acctype varchar(2),bala
+nce number);
+
+Table created.
+
+SQL> insert into bank_main values(&accno,'&name','&adress','&acctype',&balance);
+Enter value for accno: 1
+Enter value for name: keerthi
+Enter value for adress: tenali
+Enter value for acctype: s
+Enter value for balance: 34000
+old   1: insert into bank_main values(&accno,'&name','&adress','&acctype',&balance)
+new   1: insert into bank_main values(1,'keerthi','tenali','s',34000)
+
+1 row created.
+
+SQL> /
+Enter value for accno: 2
+Enter value for name: divya
+Enter value for adress: prakasham
+Enter value for acctype: c
+Enter value for balance: 25000
+old   1: insert into bank_main values(&accno,'&name','&adress','&acctype',&balance)
+new   1: insert into bank_main values(2,'divya','prakasham','c',25000)
+
+1 row created.
+
+SQL> /
+Enter value for accno: 3
+Enter value for name: sravs
+Enter value for adress: ongole
+Enter value for acctype: c
+Enter value for balance: 40000
+old   1: insert into bank_main values(&accno,'&name','&adress','&acctype',&balance)
+new   1: insert into bank_main values(3,'sravs','ongole','c',40000)
+
+1 row created.
+
+SQL> /
+Enter value for accno: 4
+Enter value for name: lohi
+Enter value for adress: guntur
+Enter value for acctype: c
+Enter value for balance: 32000
+old   1: insert into bank_main values(&accno,'&name','&adress','&acctype',&balance)
+new   1: insert into bank_main values(4,'lohi','guntur','c',32000)
+
+1 row created.
+
+SQL> create table bank_trans(accno number,trtype varchar(2),trdate date,tramt number,upd_flag varcha
+r(5) default null);
+
+Table created.
+
+  1* insert into bank_trans values(&accno,'&trtypre',sysdate,&tramt,'&upd_flag')
+SQL> /
+Enter value for accno: 1
+Enter value for trtypre: d
+Enter value for tramt: 13000
+Enter value for upd_flag: 
+old   1: insert into bank_trans values(&accno,'&trtypre',sysdate,&tramt,'&upd_flag')
+new   1: insert into bank_trans values(1,'d',sysdate,13000,'')
+
+1 row created.
+
+SQL> /
+Enter value for accno: 3
+Enter value for trtypre: w
+Enter value for tramt: 10000
+Enter value for upd_flag: 
+old   1: insert into bank_trans values(&accno,'&trtypre',sysdate,&tramt,'&upd_flag')
+new   1: insert into bank_trans values(3,'w',sysdate,10000,'')
+
+1 row created.
+
+SQL> /
+Enter value for accno: 2
+Enter value for trtypre: d
+Enter value for tramt: 15000
+Enter value for upd_flag: 
+old   1: insert into bank_trans values(&accno,'&trtypre',sysdate,&tramt,'&upd_flag')
+new   1: insert into bank_trans values(2,'d',sysdate,15000,'')
+
+1 row created.
 11. Write a PL/SQL block to handle the following built-in exceptions
 no_data_found
 too_many_rows
