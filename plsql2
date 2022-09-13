@@ -1,84 +1,100 @@
-1.	Write a stored procedure, raise_salary which accepts an employee number, increment and modifies salary
-of that employee in employee table. Modified salary =salary increase amount+ current salary. If employee number
-is not found or if the current salary is null, it should raise an exception. Otherwise, updates the salary.
-
-declare
-my_exception exception;
-no number;
+3. create or replace function incr(n number) return number as
+salary number;
 inc number;
-pay number;
 begin
-no:=&no;
-inc:=&inc;
-select basic_pay into pay from employee where no=eno;
-if pay=0 then 
-raise my_exception;
-else
-update employee set basic_pay=basic_pay+inc where no=eno;
+select sal into salary from emp where empno=n;
+if salary<=3000 then inc:=(0.3*salary);
+elsif salary<=6000 then inc:=(0.2*salary);
+else inc:=(0.1*salary);
+end if;
+salary:=salary+inc;
+RETURN salary;
+end;
+/
+
+SQL> @ C:\\Users\\exam2\\Desktop\\table.sql;
+Input truncated to 1 characters
+
+Function created.
+
+SQL> EXEC dbms_output.put_line('inceremented salary: '||incr(7788));
+inceremented salary: 3840
+
+PL/SQL procedure successfully completed.
+
+
+1.
+create or replace procedure raise_sal(no IN number) as
+salary number;
+inc number;
+my_exception exception;
+begin
+select sal into salary from emp where empno=no;
+if salary is null then raise my_exception;
+else 
+inc:=incr(no);
+dbms_output.put_line(inc||'is the incremented salary');
 end if;
 exception
-when my_exception then 
-dbms_output.put_line('exception occured');
-when no_data_found then 
-dbms_output.put_line('no data found');
+when no_data_found then dbms_output.put_line('data not found');
+when my_exception then dbms_output.put_line('null value occured');
+end;
+/
+SQL> exec raise_sal(7876);
+1430is the incremented salary
+
+PL/SQL procedure successfully completed.
+
+SQL> exec raise_sal(1111);
+data not found
+
+PL/SQL procedure successfully completed.
+
+
+2. 
+create or replace function find_sal(no number) return number as
+total number;
+begin
+select sum(sal) into total from emp where deptno=no;
+return total;
 end;
 /
 
-SQL> select * from employee;
-
-       ENO ENAME                 BASIC_PAY
----------- -------------------- ----------
-         1 keerthi                   63000
-         2 sravs                     50000
-         3 john                          0
-SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
-Enter value for no: 4
-old   7: no:=&no;
-new   7: no:=4;
-Enter value for inc: 3000
-old   8: inc:=&inc;
-new   8: inc:=3000;
-no data found
+SQL> exec dbms_output.put_line('total salary: '||find_sal(10));
+total salary: 8750
 
 PL/SQL procedure successfully completed.
 
-SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
-Enter value for no: 3
-old   7: no:=&no;
-new   7: no:=3;
-Enter value for inc: 3000
-old   8: inc:=&inc;
-new   8: inc:=3000;
-exception occured
-
-PL/SQL procedure successfully completed.
-2.	Write a PL/SQL function that accepts department number and returns the total salary of the department.
-declare
-total number:=0;
-deptn emp.deptno%type;
-salary emp.sal%type;
-num emp.deptno%type;
-cursor cur_emp is select sal,deptno from emp;
+4.
+create or replace procedure display as
+name emp.ename%type;
+tot emp.sal%type;
+cursor cur_sal is select ename,12*(sal+nvl(comm,0)) from emp;
 begin
-deptn:=&deptn;
-open cur_emp;
+open cur_sal;
 loop
-fetch cur_emp into salary,num;
-if cur_emp%NOTFOUND then exit;
-end if;
-if num=deptn then 
-total:=total+salary;
+fetch cur_sal into name,tot;
+if cur_sal%notfound then exit;
+else
+dbms_output.put_line(name||tot);
 end if;
 end loop;
-close cur_emp;
-dbms_output.put_line(total);
+close cur_sal;
 end;
 /
+SQL> exec display;
+KING60000
+BLAKE34200
+CLARK29400
+JONES35700
+MARTIN31800
+ALLEN22800
+TURNER18000
+JAMES11400
+WARD21000
+FORD36000
+SMITH9600
+SCOTT38400
+ADAMS13200
+MILLER15600
 
-SQL> @ C:\\Users\\TEMP.RVRjcCSE.000.001.002\\Desktop\\table.sql;
-Enter value for deptn: 10
-old   8: deptn:=&deptn;
-new   8: deptn:=10;
-8750
-
-PL/SQL procedure successfully completed.
